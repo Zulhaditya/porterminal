@@ -7,15 +7,16 @@
 
   // list command and output
   const commands = {
-    help: "Available commands: about, projects, contact, clear",
-    about: "I am a developer who loves terminal UIs!",
-    projects: "Project 1: Terminal Portfolio | Project 2: ...",
-    contact: "Email: me@example.com",
+    help: "\nAvailable commands: about, projects, contact, clear",
+    about: "\nI am a developer who loves terminal UIs!",
+    projects: "\nProject 1: Terminal Portfolio | Project 2: ...",
+    contact: "\nEmail: me@example.com",
   };
 
   onMount(() => {
     const terminal = new Terminal({
       cursorBlink: true,
+      scrollback: Infinity,
       fontFamily: '"Courier New", monospace',
       fontSize: 16,
       theme: {
@@ -33,9 +34,7 @@
     fitAddon.fit();
 
     // Prompt awal
-    terminal.writeln(
-      'Welcome to my terminal portfolio! Type "help" to see commands.\r\n',
-    );
+    terminal.writeln('Welcome chad! Type "help" to see commands.\r\n');
     terminal.write("$ ");
 
     // Handle input
@@ -45,6 +44,7 @@
         // Enter
         processCommand(terminal, currentInput);
         currentInput = "";
+        terminal.scrollToBottom();
       } else if (data === "\x7f") {
         // Backspace
         if (terminal.buffer.active.cursorX > 2) {
@@ -54,6 +54,10 @@
       } else if (data >= " " && data <= "~") {
         terminal.write(data);
         currentInput += data;
+        // Auto-scroll saat mengetik panjang
+        if (terminal.buffer.active.cursorY >= terminal.rows - 1) {
+          terminal.scrollToBottom();
+        }
       }
     });
 
@@ -66,24 +70,30 @@
       } else if (command === "clear") {
         term.clear();
       } else if (command) {
-        term.writeln(`Command not found: "${command}"`);
+        term.writeln(`\nCommand not found: "${command}"`);
       }
 
       // Reset prompt
       term.write("\n$ ");
+      term.scrollToBottom();
     }
 
     // Handle resize
-    window.addEventListener("resize", () => fitAddon.fit());
+    window.addEventListener("resize", () => {
+      fitAddon.fit();
+      terminal.scrollToBottom(); // Scroll ke bawah setelah resize
+    });
   });
 </script>
 
-<div bind:this={terminalContainer} class="terminal" />
+<div class="terminal-container">
+  <div bind:this={terminalContainer} class="terminal" />
+</div>
 
 <style>
-  .terminal {
+  .terminal-container {
     width: 100%;
-    height: 70vh;
+    height: 100vh;
     padding: 1rem;
     background-color: black;
     border: 1px solid #00ff00;
@@ -91,6 +101,23 @@
     box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
     overflow: hidden;
     padding: 1rem;
+  }
+
+  .terminal {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Scrollbar styling */
+  :global(.xterm-viewport) {
+    overflow-y: scroll !important;
+    scrollbar-color: #00ff00 #000000;
+  }
+
+  :global(.xterm-viewport::-webkit-scrollbar) {
+    width: 8px;
   }
 
   :global(.xterm-screen .xterm-helper-textarea) {

@@ -11,9 +11,6 @@
 </main>
 
 <style>
-  :global(#app) {
-    text-align: left !important;
-  }
   :global(body) {
     margin: 0;
     padding: 0;
@@ -21,6 +18,10 @@
     color: #00ff00;
     font-family: "Courier New", monospace;
   }
+
+  /* main { */
+  /*   max-width: 800px; */
+  /* } */
 
   .header {
     text-align: center;
