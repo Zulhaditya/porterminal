@@ -1,0 +1,52 @@
+<script>
+  import { createEventDispatcher } from "svelte";
+
+  const dispatch = createEventDispatcher();
+  let command = "";
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const cmd = command.trim();
+    if (cmd) {
+      dispatch("command", cmd);
+      command = "";
+    }
+  }
+</script>
+
+<form on:submit={handleSubmit} class="command-line">
+  <span class="prompt">$</span>
+  <input
+    type="text"
+    bind:value={command}
+    class="command-input"
+    autocomplete="off"
+    autocorrect="off"
+    autocapitalize="off"
+    spellcheck="false"
+  />
+</form>
+
+<style>
+  .command-line {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .prompt {
+    color: #4af626;
+    margin-right: 8px;
+  }
+
+  .command-input {
+    background: transparent;
+    border: none;
+    color: #f0f0f0;
+    font-family: "Courier New", monospace;
+    font-size: 1rem;
+    flex: 1;
+    outline: none;
+    caret-color: #4af626;
+  }
+</style>

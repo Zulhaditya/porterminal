@@ -1,0 +1,149 @@
+<script>
+  import CommandLine from "./CommandLine.svelte";
+  import OutputDisplay from "./OutputDisplay.svelte";
+  // Command components
+  import HelpCommand from "./commands/HelpCommand.svelte";
+  import AboutCommand from "./commands/AboutCommand.svelte";
+  import ProjectsCommand from "./commands/ProjectsCommand.svelte";
+  import ContactCommand from "./commands/ContactCommand.svelte";
+
+  let commandHistory = [];
+  let outputHistory = [];
+
+  // Available commands
+  const commands = {
+    help: HelpCommand,
+    about: AboutCommand,
+    projects: ProjectsCommand,
+    contact: ContactCommand,
+  };
+
+  function handleCommand(command) {
+    commandHistory = [...commandHistory, command];
+
+    // Process command and generate output
+    const output = processCommand(command);
+    // Add to output history
+    if (output) {
+      outputHistory = [...outputHistory, output];
+    }
+  }
+
+  function processCommand(input) {
+    try {
+      // Handle undefined/null input
+      if (input == null) {
+        return "Error: No command provided";
+      }
+
+      // Convert to string if it's not
+      const inputStr = String(input);
+      const trimmedInput = inputStr.trim();
+
+      // Handle empty input after trim
+      if (trimmedInput === "") return "";
+
+      const [command, ...args] = trimmedInput.split(" ");
+      const cmd = command.toLowerCase();
+
+      if (!commands[cmd]) {
+        return `Command not found: ${cmd}. Type <span class="command">help</span> for available commands.`;
+      }
+
+      // Special case for clear command
+      if (cmd === "clear") {
+        outputHistory = [];
+        return "";
+      }
+
+      // Render command component
+      const CommandComponent = commands[cmd];
+      const tempDiv = document.createElement("div");
+      new CommandComponent({
+        target: tempDiv,
+        props: { args },
+      });
+
+      return tempDiv.innerHTML;
+    } catch (error) {
+      console.error("Error processing command:", error);
+      return `Error: Failed to process command (${error.message})`;
+    }
+  }
+</script>
+
+<div class="terminal">
+  <div class="terminal-header">
+    <div class="terminal-buttons">
+      <span class="close"></span>
+      <span class="minimize"></span>
+      <span class="maximize"></span>
+    </div>
+    <span class="terminal-title">user@portfolio: ~</span>
+  </div>
+
+  <div class="terminal-body">
+    <OutputDisplay {outputHistory} />
+    <CommandLine on:command={handleCommand} />
+  </div>
+</div>
+
+<style>
+  .terminal {
+    width: 80%;
+    max-width: 800px;
+    height: 500px;
+    margin: 2rem auto;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    font-family: "Courier New", monospace;
+  }
+
+  .terminal-header {
+    background-color: #333;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+  }
+
+  .terminal-buttons {
+    display: flex;
+    gap: 8px;
+    margin-right: 12px;
+  }
+
+  .terminal-buttons span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .close {
+    background-color: #ff5f56;
+  }
+  .minimize {
+    background-color: #ffbd2e;
+  }
+  .maximize {
+    background-color: #27c93f;
+  }
+
+  .terminal-title {
+    color: #aaa;
+    font-size: 0.9rem;
+  }
+
+  .terminal-body {
+    flex: 1;
+    padding: 15px;
+    color: #f0f0f0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
+</style>
