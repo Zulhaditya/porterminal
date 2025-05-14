@@ -1,10 +1,8 @@
 <script>
   import { createEventDispatcher } from "svelte";
-  import { onMount } from "svelte";
 
   const dispatch = createEventDispatcher();
   let command = "";
-  let inputElement;
 
   function focusOnAnyKey(node) {
     const handleKeyDown = () => node.focus();

@@ -25,6 +25,9 @@
     home: Home,
     clear: Clear,
     neofetch: Neofetch,
+    calc: {
+      render: () => "",
+    },
   };
 
   function handleCommand(event) {
@@ -53,6 +56,19 @@
       // Handle empty input after trim
       if (trimmedInput === "") return "";
 
+      // Handle calculator expressions
+      if (trimmedInput.startsWith("calc ")) {
+        const expression = trimmedInput.substring(5).trim();
+        if (!expression) return "Usage: calc <expression>";
+
+        try {
+          const result = evaluateMathExpression(expression);
+          return `= ${result}`;
+        } catch (error) {
+          return `Math Error: ${error.message}`;
+        }
+      }
+
       const [command, ...args] = trimmedInput.split(" ");
       const cmd = command.toLowerCase();
 
@@ -77,6 +93,31 @@
       return `Error: Failed to process command (${error.message})`;
     }
   }
+
+  // Fungsi evaluasi ekspresi matematika
+  function evaluateMathExpression(expr) {
+    // Bersihkan input dan validasi
+    const cleanExpr = expr.replace(/[^-()\d/*+.]/g, "");
+
+    // Validasi karakter berbahaya
+    if (cleanExpr !== expr.replace(/[^a-zA-Z0-9\-()\d/*+.]/g, "")) {
+      throw new Error("Invalid characters in expression");
+    }
+
+    try {
+      // Gunakan Function constructor sebagai alternatif eval yang lebih aman
+      const result = new Function(`return ${cleanExpr}`)();
+
+      // Handle pembagian oleh nol
+      if (!isFinite(result)) {
+        throw new Error("Division by zero or infinite result");
+      }
+
+      return result;
+    } catch (error) {
+      throw new Error(`Invalid expression: ${error.message}`);
+    }
+  }
 </script>
 
 <div class="aesthetic-background"></div>
@@ -95,7 +136,7 @@
       <svelte:component this={CommandComponent} args={currentArgs} />
     {/if}
 
-    <OutputDisplay {outputHistory} />
+    <OutputDisplay {outputHistory} {commandHistory} />
     <CommandLine on:command={(e) => handleCommand(e.detail)} />
   </div>
 </div>

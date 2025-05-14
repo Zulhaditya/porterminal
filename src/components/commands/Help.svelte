@@ -15,6 +15,10 @@
         <td>Show my contact information</td>
       </tr>
       <tr>
+        <td><span class="command">calc 7 + 3 </span></td>
+        <td>Run calculator REPL</td>
+      </tr>
+      <tr>
         <td><span class="command">home</span></td>
         <td>Show homescreen</td>
       </tr>

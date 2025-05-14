@@ -1,5 +1,6 @@
 <script>
   export let outputHistory = [];
+  export let commandHistory = [];
   let outputContainer;
 
   // autoscroll when outputHistory changed
@@ -9,8 +10,16 @@
 </script>
 
 <div class="output-container" bind:this={outputContainer}>
-  {#each outputHistory as output}
-    <div class="output-line">{@html output}</div>
+  {#each outputHistory as output, i}
+    <div class="output-line">
+      {#if commandHistory[i]?.startsWith("calc ")}
+        <span class="prompt">$</span>
+        {commandHistory[i]}
+        <div class="math-result">{output}</div>
+      {:else}
+        {@html output}
+      {/if}
+    </div>
   {/each}
 </div>
 
