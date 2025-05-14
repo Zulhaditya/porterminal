@@ -1,31 +1,41 @@
 <script>
   import CommandLine from "./CommandLine.svelte";
   import OutputDisplay from "./OutputDisplay.svelte";
+
   // Command components
-  import HelpCommand from "./commands/HelpCommand.svelte";
-  import AboutCommand from "./commands/AboutCommand.svelte";
-  import ProjectsCommand from "./commands/ProjectsCommand.svelte";
-  import ContactCommand from "./commands/ContactCommand.svelte";
-  import ClearCommand from "./commands/ClearCommand.svelte";
+  import Help from "./commands/Help.svelte";
+  import About from "./commands/About.svelte";
+  import Projects from "./commands/Projects.svelte";
+  import Contact from "./commands/Contact.svelte";
+  import Clear from "./commands/Clear.svelte";
+  import Home from "./commands/Home.svelte";
 
   let commandHistory = [];
   let outputHistory = [];
-
   let currentArgs = null;
   let CommandComponent = null;
+  let showHome = true;
 
   // Available commands
   const commands = {
-    help: HelpCommand,
-    about: AboutCommand,
-    projects: ProjectsCommand,
-    contact: ContactCommand,
-    clear: ClearCommand,
+    help: Help,
+    about: About,
+    projects: Projects,
+    contact: Contact,
+    home: Home,
+    clear: Clear,
   };
+
+  function handleContinue() {
+    showHome = false;
+    setTimeout(() => {
+      const input = document.querySelector(".command-input");
+      input?.focus();
+    }, 100);
+  }
 
   function handleCommand(event) {
     const command = typeof event === "string" ? event : event.detail;
-    console.log("Command received:", command, typeof command); // Debug di sini
     commandHistory = [...commandHistory, command];
 
     // Process command and generate output
@@ -67,6 +77,7 @@
 
       CommandComponent = commands[cmd];
       currentArgs = args;
+      outputHistory = [];
       return "";
     } catch (error) {
       console.error("Error processing command:", error);
@@ -76,30 +87,35 @@
 </script>
 
 <div class="terminal">
-  <div class="terminal-header">
-    <div class="terminal-buttons">
-      <span class="close"></span>
-      <span class="minimize"></span>
-      <span class="maximize"></span>
+  {#if showHome}
+    <Home onContinue={handleContinue} />
+  {:else}
+    <div class="terminal-header">
+      <div class="terminal-buttons">
+        <span class="close"></span>
+        <span class="minimize"></span>
+        <span class="maximize"></span>
+      </div>
+      <span class="terminal-title">root@debian: ~</span>
     </div>
-    <span class="terminal-title">root@debian: ~</span>
-  </div>
 
-  {#if CommandComponent && CommandComponent !== ClearCommand}
-    <svelte:component this={CommandComponent} args={currentArgs} />
+    {#if CommandComponent && CommandComponent !== Clear}
+      <svelte:component this={CommandComponent} args={currentArgs} />
+    {/if}
+
+    <div class="terminal-body">
+      <OutputDisplay {outputHistory} />
+      <CommandLine on:command={(e) => handleCommand(e.detail)} />
+    </div>
   {/if}
-  <div class="terminal-body">
-    <OutputDisplay {outputHistory} />
-    <CommandLine on:command={(e) => handleCommand(e.detail)} />
-  </div>
 </div>
 
 <style>
   .terminal {
     width: 80%;
     max-width: 1280px;
-    height: 500px;
-    margin: 3rem auto;
+    height: 550px;
+    margin: 2rem auto;
     background-color: #1e1e1e;
     border-radius: 8px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
@@ -151,5 +167,50 @@
     overflow-y: auto;
     display: flex;
     flex-direction: column;
+  }
+
+  .welcome-message {
+    color: #b5bd68;
+    font-family: "Courier New", monospace;
+    margin-bottom: 1.5rem;
+  }
+
+  .ascii-art {
+    color: #8abeb7;
+    line-height: 1.2;
+    margin: 0 0 1rem 0;
+    white-space: pre;
+    font-size: 0.8rem;
+  }
+
+  .system-info {
+    color: #b5bd68;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+
+  .system-info p {
+    margin: 0.3rem 0;
+  }
+
+  .help-hint {
+    color: #f0c674;
+    margin-top: 1.5rem;
+  }
+
+  /* Efek typewriter untuk pesan */
+  .typewriter {
+    border-right: 2px solid #4af626;
+    animation: blink-caret 0.75s step-end infinite;
+  }
+
+  @keyframes blink-caret {
+    from,
+    to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: #4af626;
+    }
   }
 </style>
