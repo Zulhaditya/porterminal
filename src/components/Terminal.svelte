@@ -6,12 +6,12 @@
   import AboutCommand from "./commands/AboutCommand.svelte";
   import ProjectsCommand from "./commands/ProjectsCommand.svelte";
   import ContactCommand from "./commands/ContactCommand.svelte";
+  import ClearCommand from "./commands/ClearCommand.svelte";
 
   let commandHistory = [];
   let outputHistory = [];
 
   let currentArgs = null;
-  let componentProps = {};
   let CommandComponent = null;
 
   // Available commands
@@ -20,6 +20,7 @@
     about: AboutCommand,
     projects: ProjectsCommand,
     contact: ContactCommand,
+    clear: ClearCommand,
   };
 
   function handleCommand(event) {
@@ -52,33 +53,21 @@
       const [command, ...args] = trimmedInput.split(" ");
       const cmd = command.toLowerCase();
 
+      // Special case for clear command
+      if (cmd === "clear") {
+        outputHistory = [];
+        commandHistory = [];
+        CommandComponent = null;
+        return "";
+      }
+
       if (!commands[cmd]) {
         return `Command not found: ${cmd}. Type <span class="command">help</span> for available commands.`;
       }
 
-      // Special case for clear command
-      if (cmd === "clear") {
-        outputHistory = [];
-        return "";
-      }
-
-      if (commands[cmd]) {
-        CommandComponent = commands[cmd];
-        currentArgs = args;
-        return ""; // Render akan ditangani oleh <svelte:component>
-      }
-
-      return `Command not found: ${cmd}`;
-
-      // Render command component
-      // const CommandComponent = commands[cmd];
-      // const tempDiv = document.createElement("div");
-      // new CommandComponent({
-      //   target: tempDiv,
-      //   props: { args },
-      // });
-      //
-      // return tempDiv.innerHTML;
+      CommandComponent = commands[cmd];
+      currentArgs = args;
+      return "";
     } catch (error) {
       console.error("Error processing command:", error);
       return `Error: Failed to process command (${error.message})`;
@@ -93,13 +82,12 @@
       <span class="minimize"></span>
       <span class="maximize"></span>
     </div>
-    <span class="terminal-title">user@portfolio: ~</span>
+    <span class="terminal-title">root@debian: ~</span>
   </div>
 
-  {#if CommandComponent}
+  {#if CommandComponent && CommandComponent !== ClearCommand}
     <svelte:component this={CommandComponent} args={currentArgs} />
   {/if}
-
   <div class="terminal-body">
     <OutputDisplay {outputHistory} />
     <CommandLine on:command={(e) => handleCommand(e.detail)} />
@@ -109,9 +97,9 @@
 <style>
   .terminal {
     width: 80%;
-    max-width: 800px;
+    max-width: 1280px;
     height: 500px;
-    margin: 2rem auto;
+    margin: 3rem auto;
     background-color: #1e1e1e;
     border-radius: 8px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
