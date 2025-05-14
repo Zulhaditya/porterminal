@@ -12,14 +12,6 @@ Type 'help' for information
 
   onMount(() => {
     typeWriter();
-    const handleKeyDown = (e) => {
-      if (e.key === "Enter" && typingComplete) {
-        onContinue();
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
   });
 
   function typeWriter() {
@@ -42,9 +34,6 @@ Type 'help' for information
 
 <div class="home-screen">
   <pre class="ascii-art">
-⣿⣿⣿⣿⣿⣿⣿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⢟⣵⢿⢛⣿⣿⣿⣿⣿⣿⣯⣞⣿⣿⣿⣤⣀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣽⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢟⣽
-⣿⣿⣿⣿⣯⢵⣪⣷⣿⣿⣿⣿⣿⣟⣵⢯⣿⣿⣳⣻⣿⣯⡆⢻⣿⡽⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣯⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⣹⢾⣿⣿
 ⣟⢿⣻⣯⣷⣿⣿⣿⣿⡿⣿⣿⣟⣾⢏⣿⣿⢧⡏⣿⣿⣼⣿⣄⡙⠿⣮⣟⡿⠿⣿⣟⣿⣿⣿⣿⣿⣿⣿⣯⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣮⣵⣙⢿
 ⣿⣷⣿⣽⣟⣻⣿⡿⣫⣾⣿⡿⣾⠋⣼⢿⠃⣼⢹⣿⠋⣿⣿⣿⣿⣷⣶⣶⣿⢿⣶⣶⣞⣿⣿⣿⣿⣿⣿⣿⣷⡙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣹⣿
 ⣿⣿⣿⣿⣿⣿⢯⣾⣿⡿⠿⢷⠁⠀⣿⠇⠀⠁⢸⠃⠀⣿⣿⣿⣿⣿⢹⣿⣿⡏⢿⣿⣿⣞⠻⣿⢿⣿⡟⢿⣿⣷⠀⠉⠻⣿⣿⣿⣿⣿⣟⡿⣿⣷⢿
@@ -61,7 +50,6 @@ Type 'help' for information
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡁⠀⠀⠙⠿⠛⠋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢟⣯⣶⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣹⣷⡹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⣽⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⣿⢿⣿⣾⣝⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡗⣿⣿⢸⣿⡏⣹⣿⠀⠀⣠⣾⣿⡿⣻⣿⣿⣟⡽⠀⢰⣡⢁⣿⣿⣿⣽⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
   </pre>
 
   <div class="welcome-message">
@@ -71,10 +59,6 @@ Type 'help' for information
       <pre>{welcomeMessage}</pre>
     {/if}
   </div>
-
-  <button class="continue-btn" on:click={onContinue} disabled={!typingComplete}>
-    Press Enter to Continue
-  </button>
 </div>
 
 <style>
@@ -90,30 +74,11 @@ Type 'help' for information
 
   .ascii-art {
     color: #8abeb7;
-    line-height: 1;
+    line-height: 1.5;
     margin-top: 2rem;
   }
 
   .welcome-message {
     white-space: pre-wrap;
-  }
-
-  .continue-btn {
-    background: transparent;
-    border: 1px solid #4af626;
-    color: #4af626;
-    padding: 0.5rem 1rem;
-    font-family: "Courier New", monospace;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-
-  .continue-btn:hover {
-    background: rgba(74, 246, 38, 0.1);
-  }
-
-  .continue-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
   }
 </style>

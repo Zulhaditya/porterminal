@@ -1,8 +1,26 @@
 <script>
   import { createEventDispatcher } from "svelte";
+  import { onMount } from "svelte";
 
   const dispatch = createEventDispatcher();
   let command = "";
+  let inputElement;
+
+  function focusOnAnyKey(node) {
+    const handleKeyDown = () => node.focus();
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return {
+      destroy() {
+        document.removeEventListener("keydown", handleKeyDown);
+      },
+    };
+  }
+
+  // onMount(() => {
+  //   inputElement.focus();
+  // });
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -20,6 +38,7 @@
   <span class="prompt">$</span>
   <input
     type="text"
+    use:focusOnAnyKey
     bind:value={command}
     class="command-input"
     autocomplete="off"
@@ -33,7 +52,7 @@
   .command-line {
     display: flex;
     align-items: center;
-    margin-top: 10px;
+    margin-bottom: 1rem;
   }
 
   .prompt {

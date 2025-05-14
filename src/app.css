@@ -22,11 +22,6 @@ body {
   font-family: monospace;
   white-space: pre;
   line-height: 1.2;
-  margin-bottom: 1rem;
-}
-
-.welcome-message {
-  margin-bottom: 1rem;
 }
 
 .initial-prompt {

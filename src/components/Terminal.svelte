@@ -14,7 +14,6 @@
   let outputHistory = [];
   let currentArgs = null;
   let CommandComponent = null;
-  let showHome = true;
 
   // Available commands
   const commands = {
@@ -25,14 +24,6 @@
     home: Home,
     clear: Clear,
   };
-
-  function handleContinue() {
-    showHome = false;
-    // Fokuskan input setelah transisi
-    setTimeout(() => {
-      document.querySelector(".command-input")?.focus();
-    }, 100);
-  }
 
   function handleCommand(event) {
     const command = typeof event === "string" ? event : event.detail;
@@ -87,27 +78,23 @@
 </script>
 
 <div class="terminal">
-  {#if showHome}
-    <Home onContinue={handleContinue} />
-  {:else}
-    <div class="terminal-header">
-      <div class="terminal-buttons">
-        <span class="close"></span>
-        <span class="minimize"></span>
-        <span class="maximize"></span>
-      </div>
-      <span class="terminal-title">root@debian: ~</span>
+  <div class="terminal-header">
+    <div class="terminal-buttons">
+      <span class="close"></span>
+      <span class="minimize"></span>
+      <span class="maximize"></span>
     </div>
+    <span class="terminal-title">root@debian: ~</span>
+  </div>
 
-    <div class="terminal-body">
-      {#if CommandComponent && CommandComponent !== Clear}
-        <svelte:component this={CommandComponent} args={currentArgs} />
-      {/if}
+  <div class="terminal-body">
+    {#if CommandComponent && CommandComponent !== Clear}
+      <svelte:component this={CommandComponent} args={currentArgs} />
+    {/if}
 
-      <OutputDisplay {outputHistory} />
-      <CommandLine on:command={(e) => handleCommand(e.detail)} />
-    </div>
-  {/if}
+    <OutputDisplay {outputHistory} />
+    <CommandLine on:command={(e) => handleCommand(e.detail)} />
+  </div>
 </div>
 
 <style>
