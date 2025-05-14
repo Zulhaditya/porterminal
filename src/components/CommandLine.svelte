@@ -26,7 +26,6 @@
     autocorrect="off"
     autocapitalize="off"
     spellcheck="false"
-    autofocus
   />
 </form>
 

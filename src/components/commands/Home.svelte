@@ -91,7 +91,7 @@ Type 'help' for information
   .ascii-art {
     color: #8abeb7;
     line-height: 1;
-    margin-top: 5rem;
+    margin-top: 2rem;
   }
 
   .welcome-message {

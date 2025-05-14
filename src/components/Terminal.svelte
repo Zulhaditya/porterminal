@@ -28,9 +28,9 @@
 
   function handleContinue() {
     showHome = false;
+    // Fokuskan input setelah transisi
     setTimeout(() => {
-      const input = document.querySelector(".command-input");
-      input?.focus();
+      document.querySelector(".command-input")?.focus();
     }, 100);
   }
 
@@ -99,11 +99,11 @@
       <span class="terminal-title">root@debian: ~</span>
     </div>
 
-    {#if CommandComponent && CommandComponent !== Clear}
-      <svelte:component this={CommandComponent} args={currentArgs} />
-    {/if}
-
     <div class="terminal-body">
+      {#if CommandComponent && CommandComponent !== Clear}
+        <svelte:component this={CommandComponent} args={currentArgs} />
+      {/if}
+
       <OutputDisplay {outputHistory} />
       <CommandLine on:command={(e) => handleCommand(e.detail)} />
     </div>
@@ -119,7 +119,6 @@
     background-color: #1e1e1e;
     border-radius: 8px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     font-family: "Courier New", monospace;
@@ -130,6 +129,20 @@
     padding: 8px 12px;
     display: flex;
     align-items: center;
+  }
+
+  .terminal-title {
+    color: #aaa;
+    font-size: 0.9rem;
+  }
+
+  .terminal-body {
+    flex: 1;
+    padding: 15px;
+    color: #f0f0f0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
   }
 
   .terminal-buttons {
@@ -153,64 +166,5 @@
   }
   .maximize {
     background-color: #27c93f;
-  }
-
-  .terminal-title {
-    color: #aaa;
-    font-size: 0.9rem;
-  }
-
-  .terminal-body {
-    flex: 1;
-    padding: 15px;
-    color: #f0f0f0;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .welcome-message {
-    color: #b5bd68;
-    font-family: "Courier New", monospace;
-    margin-bottom: 1.5rem;
-  }
-
-  .ascii-art {
-    color: #8abeb7;
-    line-height: 1.2;
-    margin: 0 0 1rem 0;
-    white-space: pre;
-    font-size: 0.8rem;
-  }
-
-  .system-info {
-    color: #b5bd68;
-    margin-bottom: 1rem;
-    line-height: 1.5;
-  }
-
-  .system-info p {
-    margin: 0.3rem 0;
-  }
-
-  .help-hint {
-    color: #f0c674;
-    margin-top: 1.5rem;
-  }
-
-  /* Efek typewriter untuk pesan */
-  .typewriter {
-    border-right: 2px solid #4af626;
-    animation: blink-caret 0.75s step-end infinite;
-  }
-
-  @keyframes blink-caret {
-    from,
-    to {
-      border-color: transparent;
-    }
-    50% {
-      border-color: #4af626;
-    }
   }
 </style>

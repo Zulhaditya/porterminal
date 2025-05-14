@@ -1,3 +1,7 @@
+
+body {
+  background: black;
+}
 /* Global Terminal Styles */
 .command {
   color: #4af626;

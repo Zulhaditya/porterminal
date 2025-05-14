@@ -19,6 +19,22 @@
 
   <h4>Experience:</h4>
   <p>5+ years building web applications for various clients and industries.</p>
+
+  <h4>Skills:</h4>
+  <ul>
+    <li>JavaScript/TypeScript</li>
+    <li>Svelte/React/Vue</li>
+    <li>Node.js</li>
+    <li>UI/UX Design</li>
+  </ul>
+
+  <h4>Skills:</h4>
+  <ul>
+    <li>JavaScript/TypeScript</li>
+    <li>Svelte/React/Vue</li>
+    <li>Node.js</li>
+    <li>UI/UX Design</li>
+  </ul>
 </div>
 
 <style>
