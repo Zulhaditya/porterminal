@@ -9,6 +9,7 @@
   import Contact from "./commands/Contact.svelte";
   import Clear from "./commands/Clear.svelte";
   import Home from "./commands/Home.svelte";
+  import Neofetch from "./commands/Neofetch.svelte";
 
   let commandHistory = [];
   let outputHistory = [];
@@ -23,6 +24,7 @@
     contact: Contact,
     home: Home,
     clear: Clear,
+    neofetch: Neofetch,
   };
 
   function handleCommand(event) {

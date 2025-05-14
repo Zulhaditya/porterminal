@@ -19,6 +19,10 @@
         <td>Show homescreen</td>
       </tr>
       <tr>
+        <td><span class="command">neofetch</span></td>
+        <td>Show a specification</td>
+      </tr>
+      <tr>
         <td><span class="command">projects</span></td>
         <td>List of my projects</td>
       </tr>
