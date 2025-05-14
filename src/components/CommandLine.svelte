@@ -8,7 +8,9 @@
     e.preventDefault();
     const cmd = command.trim();
     if (cmd) {
-      dispatch("command", cmd);
+      dispatch("command", {
+        detail: cmd, // Pastikan mengirim sebagai properti detail
+      });
       command = "";
     }
   }

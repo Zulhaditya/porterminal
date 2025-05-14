@@ -1,21 +1,22 @@
 <script>
-  export let args = [];
+  export const args = [];
 
   const projects = [
     {
       name: "Terminal Portfolio",
       description: "This interactive portfolio website with terminal theme",
-      tech: ["Svelte", "JavaScript", "CSS"],
     },
     {
       name: "E-commerce Platform",
       description: "Full-featured online store with payment integration",
-      tech: ["React", "Node.js", "MongoDB"],
     },
     {
       name: "Task Management App",
       description: "Productivity application for team collaboration",
-      tech: ["Vue", "Firebase", "Vuex"],
+    },
+    {
+      name: "Task Management App",
+      description: "Productivity application for team collaboration",
     },
   ];
 </script>
@@ -23,15 +24,10 @@
 <div class="command-output projects">
   <h3>My Projects</h3>
 
-  {#each projects as project}
+  {#each projects as project, i}
     <div class="project">
-      <h4>{project.name}</h4>
+      <h4>{i + 1}. {project.name}</h4>
       <p>{project.description}</p>
-      <div class="tech">
-        {#each project.tech as tech}
-          <span class="tech-tag">{tech}</span>
-        {/each}
-      </div>
     </div>
   {/each}
 </div>
@@ -40,12 +36,13 @@
   .projects h3 {
     color: #4af626;
     margin-bottom: 15px;
+    padding-left: 2rem;
   }
 
   .project {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     padding-bottom: 15px;
-    border-bottom: 1px solid #333;
+    padding-left: 2rem;
   }
 
   .project h4 {
@@ -53,18 +50,9 @@
     margin: 0 0 5px 0;
   }
 
-  .tech {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 8px;
-  }
-
-  .tech-tag {
-    background-color: #333;
-    color: #4af626;
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-size: 0.8rem;
+  .project p {
+    color: white;
+    margin: 0;
+    padding: 0;
   }
 </style>

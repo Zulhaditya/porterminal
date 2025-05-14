@@ -1,5 +1,5 @@
 <script>
-  export let args = [];
+  export const args = [];
 </script>
 
 <div class="command-output about">
@@ -26,14 +26,21 @@
   .about h4 {
     color: #4af626;
     margin: 10px 0 5px 0;
+    padding-left: 2rem;
   }
 
   .about ul {
     margin: 5px 0;
-    padding-left: 20px;
+    margin-left: 2rem;
   }
 
   .about li {
     margin-bottom: 3px;
+    color: white;
+  }
+
+  .about p {
+    margin-left: 2rem;
+    color: white;
   }
 </style>

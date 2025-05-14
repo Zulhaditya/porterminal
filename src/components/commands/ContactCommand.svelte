@@ -1,11 +1,11 @@
 <script>
-  export let args = [];
+  export const args = [];
 
   const contacts = [
-    { type: "Email", value: "hello@myportfolio.com", icon: "✉️" },
-    { type: "GitHub", value: "github.com/myusername", icon: "🐙" },
-    { type: "LinkedIn", value: "linkedin.com/in/myprofile", icon: "🔗" },
-    { type: "Twitter", value: "@myhandle", icon: "🐦" },
+    { type: "Gmail", value: "zulhaditya@gmail.com" },
+    { type: "GitHub", value: "github.com/zulhaditya" },
+    { type: "LinkedIn", value: "linkedin.com/in/zulhaditya" },
+    { type: "Twitter", value: "x.com/ackxle" },
   ];
 </script>
 
@@ -14,9 +14,10 @@
 
   {#each contacts as contact}
     <div class="contact-method">
-      <span class="icon">{contact.icon}</span>
       <span class="type">{contact.type}:</span>
-      <span class="value">{contact.value}</span>
+      <a href="https://{contact.value}" target="_blank" class="value"
+        >{contact.value}</a
+      >
     </div>
   {/each}
 
@@ -26,8 +27,12 @@
 </div>
 
 <style>
+  .contact {
+    padding-left: 2rem;
+  }
   .contact h3 {
-    color: #4af626;
+    color: white;
+    font-weight: bold;
     margin-bottom: 15px;
   }
 
@@ -37,20 +42,20 @@
     margin-bottom: 10px;
   }
 
-  .icon {
-    margin-right: 10px;
-    font-size: 1.2rem;
-  }
-
   .type {
     font-weight: bold;
     margin-right: 5px;
     min-width: 70px;
+    color: #4af626;
+  }
+
+  .value {
+    color: white;
   }
 
   .note {
     margin-top: 15px;
     font-style: italic;
-    color: #aaa;
+    color: white;
   }
 </style>

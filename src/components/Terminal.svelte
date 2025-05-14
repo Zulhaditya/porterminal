@@ -10,6 +10,10 @@
   let commandHistory = [];
   let outputHistory = [];
 
+  let currentArgs = null;
+  let componentProps = {};
+  let CommandComponent = null;
+
   // Available commands
   const commands = {
     help: HelpCommand,
@@ -18,7 +22,9 @@
     contact: ContactCommand,
   };
 
-  function handleCommand(command) {
+  function handleCommand(event) {
+    const command = typeof event === "string" ? event : event.detail;
+    console.log("Command received:", command, typeof command); // Debug di sini
     commandHistory = [...commandHistory, command];
 
     // Process command and generate output
@@ -56,15 +62,23 @@
         return "";
       }
 
-      // Render command component
-      const CommandComponent = commands[cmd];
-      const tempDiv = document.createElement("div");
-      new CommandComponent({
-        target: tempDiv,
-        props: { args },
-      });
+      if (commands[cmd]) {
+        CommandComponent = commands[cmd];
+        currentArgs = args;
+        return ""; // Render akan ditangani oleh <svelte:component>
+      }
 
-      return tempDiv.innerHTML;
+      return `Command not found: ${cmd}`;
+
+      // Render command component
+      // const CommandComponent = commands[cmd];
+      // const tempDiv = document.createElement("div");
+      // new CommandComponent({
+      //   target: tempDiv,
+      //   props: { args },
+      // });
+      //
+      // return tempDiv.innerHTML;
     } catch (error) {
       console.error("Error processing command:", error);
       return `Error: Failed to process command (${error.message})`;
@@ -82,9 +96,13 @@
     <span class="terminal-title">user@portfolio: ~</span>
   </div>
 
+  {#if CommandComponent}
+    <svelte:component this={CommandComponent} args={currentArgs} />
+  {/if}
+
   <div class="terminal-body">
     <OutputDisplay {outputHistory} />
-    <CommandLine on:command={handleCommand} />
+    <CommandLine on:command={(e) => handleCommand(e.detail)} />
   </div>
 </div>
 

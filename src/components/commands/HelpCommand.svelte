@@ -1,5 +1,5 @@
 <script>
-  export let args = [];
+  export const args = [];
 </script>
 
 <div class="command-output help">
@@ -37,16 +37,18 @@
   }
 
   .help tr td:first-child {
-    padding-right: 20px;
+    padding: 0 2rem 0 2rem;
     color: #4af626;
   }
 
   .help tr td {
     padding-bottom: 8px;
     vertical-align: top;
+    color: white;
   }
 
   .help h3 {
+    padding-left: 2rem;
     margin-bottom: 5px;
     color: #f0f0f0;
   }
