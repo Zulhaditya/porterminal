@@ -77,6 +77,7 @@
   }
 </script>
 
+<div class="aesthetic-background" />
 <div class="terminal">
   <div class="terminal-header">
     <div class="terminal-buttons">
@@ -153,5 +154,72 @@
   }
   .maximize {
     background-color: #27c93f;
+  }
+
+  .aesthetic-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%);
+    z-index: -1;
+  }
+
+  .aesthetic-background::before {
+    content: "";
+    top: -10rem;
+    left: -10rem;
+    width: calc(100% + 20rem);
+    height: calc(100% + 20rem);
+    z-index: 9999;
+    position: fixed;
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/5/5c/Image_gaussian_noise_example.png);
+    opacity: 0.15;
+    pointer-events: none;
+    -webkit-animation: noise 1s steps(2) infinite;
+    animation: noise 1s steps(2) infinite;
+  }
+
+  @-webkit-keyframes noise {
+    to {
+      transform: translate3d(-7rem, 0, 0);
+    }
+  }
+
+  @keyframes noise {
+    0% {
+      transform: translate3d(0, 9rem, 0);
+    }
+    10% {
+      transform: translate3d(-1rem, -4rem, 0);
+    }
+    20% {
+      transform: translate3d(-8rem, 2rem, 0);
+    }
+    30% {
+      transform: translate3d(9rem, -9rem, 0);
+    }
+    40% {
+      transform: translate3d(-2rem, 7rem, 0);
+    }
+    50% {
+      transform: translate3d(-9rem, -4rem, 0);
+    }
+    60% {
+      transform: translate3d(2rem, 6rem, 0);
+    }
+    70% {
+      transform: translate3d(7rem, -8rem, 0);
+    }
+    80% {
+      transform: translate3d(-9rem, 1rem, 0);
+    }
+    90% {
+      transform: translate3d(6rem, -5rem, 0);
+    }
+    to {
+      transform: translate3d(-7rem, 0, 0);
+    }
   }
 </style>
