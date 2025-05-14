@@ -5,39 +5,32 @@
 <div class="command-output about">
   <h3>About Me</h3>
   <p>
-    Hello! I'm a passionate developer with expertise in web technologies. I love
-    creating interactive and user-friendly experiences.
+    Hello! I'm a <b>cybersecurity engineer</b> in local government. I am also experienced
+    in website development and database design. Currently deepening my expertise
+    in Svelte, Python, and C.
   </p>
 
   <h4>Skills:</h4>
   <ul>
     <li>JavaScript/TypeScript</li>
-    <li>Svelte/React/Vue</li>
-    <li>Node.js</li>
-    <li>UI/UX Design</li>
+    <li>Svelte</li>
+    <li>Python</li>
+    <li>Postgresql</li>
+    <li>Data Analysis</li>
+    <li>Penetration Testing</li>
   </ul>
 
   <h4>Experience:</h4>
-  <p>5+ years building web applications for various clients and industries.</p>
-
-  <h4>Skills:</h4>
-  <ul>
-    <li>JavaScript/TypeScript</li>
-    <li>Svelte/React/Vue</li>
-    <li>Node.js</li>
-    <li>UI/UX Design</li>
-  </ul>
-
-  <h4>Skills:</h4>
-  <ul>
-    <li>JavaScript/TypeScript</li>
-    <li>Svelte/React/Vue</li>
-    <li>Node.js</li>
-    <li>UI/UX Design</li>
-  </ul>
+  <p>
+    3+ years building web applications and data analysis for various clients and
+    industries.
+  </p>
 </div>
 
 <style>
+  .about {
+    padding-right: 3rem;
+  }
   .about h3,
   .about h4 {
     color: #4af626;

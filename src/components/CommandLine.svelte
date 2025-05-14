@@ -18,16 +18,12 @@
     };
   }
 
-  // onMount(() => {
-  //   inputElement.focus();
-  // });
-
   function handleSubmit(e) {
     e.preventDefault();
     const cmd = command.trim();
     if (cmd) {
       dispatch("command", {
-        detail: cmd, // Pastikan mengirim sebagai properti detail
+        detail: cmd,
       });
       command = "";
     }
@@ -35,7 +31,7 @@
 </script>
 
 <form on:submit={handleSubmit} class="command-line">
-  <span class="prompt">$</span>
+  <span class="prompt">guest@debian:$</span>
   <input
     type="text"
     use:focusOnAnyKey
@@ -45,6 +41,7 @@
     autocorrect="off"
     autocapitalize="off"
     spellcheck="false"
+    placeholder="Type 'help' for see commands"
   />
 </form>
 

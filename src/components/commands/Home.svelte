@@ -1,13 +1,13 @@
 <script>
   import { onMount } from "svelte";
 
-  export let onContinue;
   let typingComplete = false;
   let welcomeMessage = "";
 
   const fullMessage = `
 Last login: ${new Date()}
-Type 'help' for information
+
+Debian GNU/Linux 12 (bookworm) x86_64, Kernel: 6.1.0-34-amd64
   `;
 
   onMount(() => {
@@ -80,5 +80,6 @@ Type 'help' for information
 
   .welcome-message {
     white-space: pre-wrap;
+    text-align: center;
   }
 </style>

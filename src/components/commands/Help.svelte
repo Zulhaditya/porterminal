@@ -7,24 +7,28 @@
   <table>
     <tbody>
       <tr>
-        <td><span class="command">help</span></td>
-        <td>Show this help message</td>
-      </tr>
-      <tr>
         <td><span class="command">about</span></td>
         <td>Show information about me</td>
-      </tr>
-      <tr>
-        <td><span class="command">projects</span></td>
-        <td>List my projects</td>
       </tr>
       <tr>
         <td><span class="command">contact</span></td>
         <td>Show my contact information</td>
       </tr>
       <tr>
+        <td><span class="command">home</span></td>
+        <td>Show homescreen</td>
+      </tr>
+      <tr>
+        <td><span class="command">projects</span></td>
+        <td>List of my projects</td>
+      </tr>
+      <tr>
         <td><span class="command">clear</span></td>
         <td>Clear the terminal</td>
+      </tr>
+      <tr>
+        <td><span class="command">help</span></td>
+        <td>Show available commands</td>
       </tr>
     </tbody>
   </table>

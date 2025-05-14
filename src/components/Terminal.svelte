@@ -84,7 +84,7 @@
       <span class="minimize"></span>
       <span class="maximize"></span>
     </div>
-    <span class="terminal-title">root@debian: ~</span>
+    <span class="terminal-title">kitty</span>
   </div>
 
   <div class="terminal-body">

@@ -3,20 +3,34 @@
 
   const projects = [
     {
+      name: "Virtual Mouse",
+      description:
+        "Virtual mouse using webcam by implementing Hand Gesture Recognition with OpenCV.",
+      link: "https://github.com/Zulhaditya/virtual-mouse",
+    },
+    {
       name: "Terminal Portfolio",
-      description: "This interactive portfolio website with terminal theme",
+      description:
+        "This interactive portfolio website with terminal theme using Svelte.",
+      link: "https://github.com/Zulhaditya/porterminal",
     },
     {
-      name: "E-commerce Platform",
-      description: "Full-featured online store with payment integration",
+      name: "Neopym",
+      description:
+        "Fast and Lightweight Neovim Configuration for your development.",
+      link: "https://github.com/Zulhaditya/neopym",
     },
     {
-      name: "Task Management App",
-      description: "Productivity application for team collaboration",
+      name: "Afiocca Website",
+      description:
+        "3D Portfolio Website with Admin Dashboard using Next.js and MongoDB.",
+      link: "https://www.antoniofiocca.com",
     },
     {
-      name: "Task Management App",
-      description: "Productivity application for team collaboration",
+      name: "Cyberpixel Game",
+      description:
+        "Action shooting game made using unity and applying the concept of the C# programming language.",
+      link: "https://github.com/Zulhaditya/cyberpixels-game",
     },
   ];
 </script>
@@ -24,9 +38,9 @@
 <div class="command-output projects">
   <h3>My Projects</h3>
 
-  {#each projects as project, i}
+  {#each projects as project}
     <div class="project">
-      <h4>{i + 1}. {project.name}</h4>
+      <a class="title" href={project.link} target="_blank">➤ {project.name}</a>
       <p>{project.description}</p>
     </div>
   {/each}
@@ -45,9 +59,12 @@
     padding-left: 2rem;
   }
 
-  .project h4 {
+  .project .title {
     color: #f0f0f0;
-    margin: 0 0 5px 0;
+    margin: 0 0 10px 0;
+    padding-bottom: 5px;
+    text-decoration: none;
+    font-weight: bold;
   }
 
   .project p {

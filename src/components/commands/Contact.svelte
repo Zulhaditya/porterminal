@@ -55,7 +55,6 @@
 
   .note {
     margin-top: 15px;
-    font-style: italic;
     color: white;
   }
 </style>
