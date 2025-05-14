@@ -77,7 +77,7 @@
   }
 </script>
 
-<div class="aesthetic-background" />
+<div class="aesthetic-background"></div>
 <div class="terminal">
   <div class="terminal-header">
     <div class="terminal-buttons">
