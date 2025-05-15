@@ -17,6 +17,7 @@
   let CommandComponent = null;
   let isRedirectingBlog = false;
   let isRedirectingGUI = false;
+  let isRedirectingGit = false;
 
   // Available commands
   const commands = {
@@ -86,6 +87,14 @@
         isRedirectingGUI = true;
         setTimeout(() => {
           window.location.href = "https://zulhaditya.vercel.app";
+        }, 1500);
+        return "";
+      }
+
+      if (cmd === "git") {
+        isRedirectingGit = true;
+        setTimeout(() => {
+          window.location.href = "https://github.com/zulhaditya";
         }, 1500);
         return "";
       }
@@ -168,6 +177,12 @@
 {#if isRedirectingGUI}
   <div class="redirect-animation">
     <p>Redirecting to GUI website...</p>
+    <div class="loading-bar"></div>
+  </div>
+{/if}
+{#if isRedirectingGit}
+  <div class="redirect-animation">
+    <p>Redirecting to GitHub</p>
     <div class="loading-bar"></div>
   </div>
 {/if}

@@ -27,6 +27,10 @@
         <td>Go to my GUI portfolio</td>
       </tr>
       <tr>
+        <td><span class="command">git</span></td>
+        <td>Go to my GitHub</td>
+      </tr>
+      <tr>
         <td><span class="command">home</span></td>
         <td>Show homescreen</td>
       </tr>
