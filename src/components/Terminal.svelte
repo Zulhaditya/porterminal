@@ -15,6 +15,8 @@
   let outputHistory = [];
   let currentArgs = null;
   let CommandComponent = null;
+  let isRedirectingBlog = false;
+  let isRedirectingGUI = false;
 
   // Available commands
   const commands = {
@@ -71,6 +73,22 @@
 
       const [command, ...args] = trimmedInput.split(" ");
       const cmd = command.toLowerCase();
+
+      if (cmd === "blog") {
+        isRedirectingBlog = true;
+        setTimeout(() => {
+          window.location.href = "https://divetech.vercel.app";
+        }, 1500);
+        return "";
+      }
+
+      if (cmd === "gui") {
+        isRedirectingGUI = true;
+        setTimeout(() => {
+          window.location.href = "https://zulhaditya.vercel.app";
+        }, 1500);
+        return "";
+      }
 
       // Special case for clear command
       if (cmd === "clear") {
@@ -140,6 +158,19 @@
     <CommandLine on:command={(e) => handleCommand(e.detail)} />
   </div>
 </div>
+
+{#if isRedirectingBlog}
+  <div class="redirect-animation">
+    <p>Redirecting to blog...</p>
+    <div class="loading-bar"></div>
+  </div>
+{/if}
+{#if isRedirectingGUI}
+  <div class="redirect-animation">
+    <p>Redirecting to GUI website...</p>
+    <div class="loading-bar"></div>
+  </div>
+{/if}
 
 <style>
   .terminal {
@@ -262,6 +293,38 @@
     }
     to {
       transform: translate3d(-7rem, 0, 0);
+    }
+  }
+
+  .redirect-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    color: white;
+  }
+
+  .loading-bar {
+    width: 200px;
+    height: 3px;
+    background: linear-gradient(to right, #4ec9b0, #4ec9b0);
+    animation: loading 1.5s linear;
+    margin-top: 1rem;
+  }
+
+  @keyframes loading {
+    from {
+      width: 0;
+    }
+    to {
+      width: 200px;
     }
   }
 </style>
