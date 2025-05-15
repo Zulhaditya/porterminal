@@ -8,44 +8,44 @@
 
   // System information
   const systemInfo = {
-    os: isWindows ? "Windows" : "Linux/WSL",
-    host: "CyberSec-PC",
-    kernel: isWindows ? "10.0.19045" : "5.15.90.1-microsoft-standard-WSL2",
+    os: "Debian GNU/Linux 12 (bookworm) x86_64",
+    host: "VivoBook_ASUSLaptop X412DK 1.0",
+    kernel: "6.1.0-34-amd64",
     uptime: "2 hours, 15 mins",
-    packages: isWindows ? "N/A" : "384 (pacman)",
-    shell: isWindows ? "PowerShell 7.3.6" : "zsh 5.9",
+    packages: "1907 (dpkg)",
+    shell: "zsh 5.9",
     resolution: `${window.screen.width}x${window.screen.height}`,
-    terminal: "Windows Terminal",
-    cpu: "AMD Ryzen 7 5800X (16) @ 3.800GHz",
-    gpu: "NVIDIA GeForce RTX 3060 Ti",
-    memory: "16GB / 32GB",
+    DE: "Cinnamon 5.6.8",
+    WM: "Mutter (Muffin)",
+    WMTheme: "cinnamon (Default)",
+    Theme: "Adwaita [GTK2/3]",
+    Icons: "gnome [GTK2/3]",
+    terminal: "kitty",
+    cpu: "AMD Ryzen 5 3500U @ 2.100GHz",
+    gpu: "AMD ATI Radeon Vega Series",
+    memory: "2426MiB / 15678MiB",
   };
 
   // ASCII Art - Choose based on OS
-  const asciiArt = isWindows
-    ? [
-        "  .+oooooooooooooooooooooooooooo+. ",
-        " -oooooooooooooooooooooooooooooooo- ",
-        "+oooo+///////+oooooooo+///////+oooo+",
-        "oooo-         -oooooo-         -oooo",
-        "oooo-         -oooooo-         -oooo",
-        "+oooo+///////+oooooooo+///////+oooo+",
-        " -oooooooooooooooooooooooooooooooo- ",
-        "  .+oooooooooooooooooooooooooooo+. ",
-      ]
-    : [
-        "       .-/+oossssoo+/-.       ",
-        "     `:+ssssssssssssssss+:`     ",
-        "   -+ssssssssssssssssssssss+-   ",
-        " .osssssssssssssssssssssssssso. ",
-        "+ssssssssssssssssssssssssssssss+",
-        "ossyyyyyyyyyyyyyyyyyyyyyyyyyyyysso",
-        "/yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy/",
-        "`/yyyyyyyyyyyyyyyyyyyyyyyyyyyyyy/`",
-        "  ./yyyyyyyyyyyyyyyyyyyyyyyyyy/.  ",
-        "    .:oyyyyyyyyyyyyyyyyyyyo:.    ",
-        "       `-/+ssyyyyysss+/-`       ",
-      ];
+  const asciiArt = [
+    "        _,met$$$$$gg.          ",
+    "      ,g$$$$$$$$$$$$$$$P.      ",
+    '    ,g$$P""       """Y$$.".    ',
+    "   ,$$P'              `$$$.     ",
+    " ',$$P       ,ggs.     `$$b:    ",
+    " `d$$'     ,$P\"'   .    $$$     ",
+    "  $$P      d$'     ,    $$P     ",
+    "  $$:      $$.   -    ,d$$'     ",
+    "  $$;      Y$b._   _,d$P'       ",
+    '  Y$$.    `.`"Y$$$$P"\'         ',
+    '  `$$b      "-.__               ',
+    "   `Y$$b                        ",
+    "    `Y$$.                       ",
+    "      `$$b.                     ",
+    "        `Y$$b.                  ",
+    '          `"Y$b._               ',
+    '              `""""             ',
+  ];
 </script>
 
 <div class="neofetch-container">
@@ -144,13 +144,6 @@
 
   .info-value {
     color: #e5e9f0;
-  }
-
-  .title {
-    color: #5e81ac;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    text-align: center;
   }
 
   @media (max-width: 600px) {
