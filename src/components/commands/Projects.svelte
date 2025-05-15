@@ -48,7 +48,7 @@
 
 <style>
   .projects h3 {
-    color: #4af626;
+    color: #8abeb7;
     margin-bottom: 15px;
     padding-left: 2rem;
   }
@@ -60,7 +60,7 @@
   }
 
   .project .title {
-    color: #f0f0f0;
+    color: #6e94b2;
     margin: 0 0 10px 0;
     padding-bottom: 5px;
     text-decoration: none;
@@ -68,7 +68,7 @@
   }
 
   .project p {
-    color: white;
+    color: #cdcdcd;
     margin: 0;
     padding: 0;
   }

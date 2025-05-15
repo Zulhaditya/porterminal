@@ -51,18 +51,18 @@
   }
 
   .prompt {
-    color: #4af626;
+    color: #8abeb7;
     margin-right: 8px;
   }
 
   .command-input {
     background: transparent;
     border: none;
-    color: #f0f0f0;
-    font-family: "Courier New", monospace;
+    color: #cdcdcd;
     font-size: 1rem;
     flex: 1;
     outline: none;
-    caret-color: #4af626;
+    caret-color: #8abeb7;
+    font-family: "Fira Code", monospace;
   }
 </style>

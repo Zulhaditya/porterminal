@@ -50,18 +50,18 @@
 
   .help tr td:first-child {
     padding: 0 2rem 0 2rem;
-    color: #4af626;
+    color: #8abeb7;
   }
 
   .help tr td {
     padding-bottom: 8px;
     vertical-align: top;
-    color: white;
+    color: #cdcdcd;
   }
 
   .help h3 {
     padding-left: 2rem;
     margin-bottom: 5px;
-    color: #f0f0f0;
+    color: #e8b589;
   }
 </style>

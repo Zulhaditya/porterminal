@@ -77,11 +77,11 @@
   .social-icon {
     width: 24px;
     height: 24px;
-    fill: white;
+    fill: #cdcdcd;
   }
 
   h2 {
-    color: white;
+    color: #6e94b2;
     font-size: 1.8rem;
     margin-bottom: 0.5rem;
   }

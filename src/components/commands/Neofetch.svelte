@@ -93,6 +93,31 @@
         >
       </div>
       <div>
+        <span class="info-label">DE</span><span class="info-value"
+          >: {systemInfo.DE}</span
+        >
+      </div>
+      <div>
+        <span class="info-label">WM</span><span class="info-value"
+          >: {systemInfo.WM}</span
+        >
+      </div>
+      <div>
+        <span class="info-label">WM Theme</span><span class="info-value"
+          >: {systemInfo.WMTheme}</span
+        >
+      </div>
+      <div>
+        <span class="info-label">Theme</span><span class="info-value"
+          >: {systemInfo.Theme}</span
+        >
+      </div>
+      <div>
+        <span class="info-label">Icons</span><span class="info-value"
+          >: {systemInfo.Icons}</span
+        >
+      </div>
+      <div>
         <span class="info-label">Terminal</span><span class="info-value"
           >: {systemInfo.terminal}</span
         >
@@ -120,7 +145,7 @@
   .neofetch-container {
     color: #e0e0e0;
     padding: 3rem;
-    max-width: 800px;
+    max-width: 820px;
     margin: 0 auto;
     line-height: 1.3;
   }
@@ -131,7 +156,7 @@
   }
 
   .ascii-art {
-    color: #5e81ac;
+    color: #8abeb7;
     white-space: pre;
     font-weight: bold;
   }
@@ -143,7 +168,7 @@
   }
 
   .info-value {
-    color: #e5e9f0;
+    color: #8abeb7;
   }
 
   @media (max-width: 600px) {

@@ -68,8 +68,7 @@ Debian GNU/Linux 12 (bookworm) x86_64, Kernel: 6.1.0-34-amd64
     align-items: center;
     justify-content: center;
     height: 100%;
-    color: #b5bd68;
-    font-family: "Courier New", monospace;
+    color: #e8b589;
   }
 
   .ascii-art {

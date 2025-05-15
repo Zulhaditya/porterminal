@@ -147,12 +147,11 @@
     max-width: 1280px;
     height: 550px;
     margin: 2rem auto;
-    background-color: #1e1e1e;
+    background-color: #141415;
     border-radius: 8px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
-    font-family: "Courier New", monospace;
   }
 
   .terminal-header {

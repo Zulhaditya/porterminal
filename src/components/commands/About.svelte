@@ -5,9 +5,9 @@
 <div class="command-output about">
   <h3>About Me</h3>
   <p>
-    Hello! I'm a <b>cybersecurity engineer</b> in local government. I am also experienced
-    in website development and database design. Currently deepening my expertise
-    in Svelte, Python, and C.
+    Hello! I'm a <b style="color: #e8b589;">cybersecurity engineer</b> in local government.
+    I am also experienced in website development and database design. Currently deepening
+    my expertise in Svelte, Python, and C.
   </p>
 
   <h4>Skills:</h4>
@@ -33,7 +33,7 @@
   }
   .about h3,
   .about h4 {
-    color: #4af626;
+    color: #6e94b2;
     margin: 10px 0 5px 0;
     padding-left: 2rem;
   }
@@ -45,11 +45,11 @@
 
   .about li {
     margin-bottom: 3px;
-    color: white;
+    color: #cdcdcd;
   }
 
   .about p {
     margin-left: 2rem;
-    color: white;
+    color: #cdcdcd;
   }
 </style>
