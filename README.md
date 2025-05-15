@@ -1,11 +1,13 @@
 # Terminal Portfolio with Svelte
 
+A modern Linux-style interactive portfolio built with Svelte, Javascript, and CSS.
+
+## Screenshot
+
 ![Home](/public/home.png)
 ![Contact](/public/contact.png)
 ![Neofetch](/public/neofetch.png)
 ![Projects](/public/project.png)
-
-A modern Linux-style interactive portfolio built with Svelte, Javascript, and CSS.
 
 ## ✨ Features
 
