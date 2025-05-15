@@ -11,12 +11,20 @@
         <td>Show information about me</td>
       </tr>
       <tr>
+        <td><span class="command">blog</span></td>
+        <td>Go to my blog post</td>
+      </tr>
+      <tr>
         <td><span class="command">contact</span></td>
         <td>Show my contact information</td>
       </tr>
       <tr>
-        <td><span class="command">calc 7 + 3 </span></td>
+        <td><span class="command">calc 7 + 3</span></td>
         <td>Run calculator REPL</td>
+      </tr>
+      <tr>
+        <td><span class="command">gui</span></td>
+        <td>Go to my GUI portfolio</td>
       </tr>
       <tr>
         <td><span class="command">home</span></td>
