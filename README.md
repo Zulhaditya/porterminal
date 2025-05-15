@@ -1,6 +1,9 @@
 # Terminal Portfolio with Svelte
 
-![Terminal Screenshot](./screenshot.png) <!-- Replace with actual screenshot -->
+![Home](/public/home.png)
+![Contact](/public/contact.png)
+![Neofetch](/public/neofetch.png)
+![Projects](/public/project.png)
 
 A modern Linux-style interactive portfolio built with Svelte, Javascript, and CSS.
 
@@ -15,17 +18,17 @@ A modern Linux-style interactive portfolio built with Svelte, Javascript, and CS
 
 ## 🚀 Available Commands
 
-| Command      | Description                  |     |
-| ------------ | ---------------------------- | --- |
-| `about`      | Display about me information |     |
-| `contact`    | Show contact information     |     |
-| `calc 7 + 3` | Run calculator               |     |
-| `home`       | Show homescreen              |     |
-| `neofetch`   | Show a specification         |     |
-| `projects`   | List of projects             |     |
-| `clear`      | Clear terminal               |     |
-| `help`       | Show available commands      |     |
-|              |                              |     |
+| Command      | Description                  |
+| ------------ | ---------------------------- |
+| `about`      | Display about me information |
+| `contact`    | Show contact information     |
+| `calc 7 + 3` | Run calculator               |
+| `home`       | Show homescreen              |
+| `neofetch`   | Show a specification         |
+| `projects`   | List of projects             |
+| `clear`      | Clear terminal               |
+| `help`       | Show available commands      |
+|              |                              |
 
 ## 🛠️ Tech Stack
 
